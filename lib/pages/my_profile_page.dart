@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/profile_controller.dart';
-import '../views/item_of_profile.dart';
+import '../witgets/item_of_profile.dart';
+
 
 class MyProfilePage extends StatefulWidget {
   const MyProfilePage({Key? key}) : super(key: key);
@@ -259,7 +260,10 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 child: CircularProgressIndicator(),
               ): const SizedBox.shrink(),
             ],
-          ));});
+          )
+          );
+        }
+        );
     }
   }
 

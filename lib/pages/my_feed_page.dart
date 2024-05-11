@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngdemo17/controller/feed_controller.dart';
-import '../views/item_of_feed.dart';
+
+import '../witgets/item_of_feed.dart';
 
 class MyFeedPage extends StatefulWidget {
   final PageController? pageController;

@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/likes_controller.dart';
-import '../views/item_of_likes.dart';
+import '../witgets/item_of_likes.dart';
+
 
 class MyLikesPage extends StatefulWidget {
   const MyLikesPage({Key? key}) : super(key: key);

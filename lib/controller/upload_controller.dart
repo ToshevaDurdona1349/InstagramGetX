@@ -5,12 +5,17 @@ import 'package:image_picker/image_picker.dart';
 import '../model/post_model.dart';
 import '../services/db_service.dart';
 import '../services/file_service.dart';
+import '../services/utils_service.dart';
 
 class MyUploadController extends GetxController{
   bool isLoading = false;
   var captionController = TextEditingController();
+  int count_posts = 0;
+  int axisCount = 2;
   final ImagePicker picker = ImagePicker();
   File? image;
+  List<Post> items = [];
+
 
   moveToFeed(PageController pageController) {
     isLoading = false;
@@ -64,5 +69,27 @@ class MyUploadController extends GetxController{
     DBService.storeFeed(posted).then((value) => {
       moveToFeed(pageController),
     });
+  }
+  dialogRemovePost(Post post,BuildContext context) async {
+    var result = await Utils.dialogCommon(context, "Instagram", "Do you want to detele this post?", false);
+    if (result) {
+      isLoading = true;
+      update();
+
+      DBService.removePost(post).then((value) => {
+        apiLoadPosts(),
+      });
+    }
+  }
+  apiLoadPosts() {
+    DBService.loadPosts().then((value) => {
+      resLoadPosts(value),
+    });
+  }
+  resLoadPosts(List<Post> posts) {
+    isLoading = false;
+    items = posts;
+    count_posts = posts.length;
+    update();
   }
 }
